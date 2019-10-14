@@ -1,5 +1,5 @@
-<!-- jQuery -->
-<script src="<?= base_url('assets/gentelella/') ?>vendors/jquery/dist/jquery.min.js"></script>
+    <!-- jQuery -->
+    <script src="<?= base_url('assets/gentelella/') ?>vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="<?= base_url('assets/gentelella/') ?>vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->

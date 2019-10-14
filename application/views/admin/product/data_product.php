@@ -85,7 +85,7 @@
 										<ul class="nav navbar-right panel_toolbox">
 											<li><a class="collapse-link" style="margin-right:10px;"><i class="fa fa-chevron-up"></i></a>
 											</li>
-											<a href=""><button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+											<a href="<?= base_url('dashboard/admin/add_product') ?>"><button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
                         Tambah Produk Baru
                       </button></a>
 										</ul>
