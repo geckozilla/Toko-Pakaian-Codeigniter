@@ -15,8 +15,8 @@
 		<ul class="nav child_menu">
 			<li><a href="<?= base_url('dashboard/admin/data_product') ?>">List Produk</a></li>
 			<li><a href="<?= base_url('dashboard/admin/add_product') ?>">Tambah Produk</a></li>
-			<li><a href="form_validation.html">Form Validation</a></li>
-			<li><a href="form_wizards.html">Form Wizard</a></li>
+			<li><a href="<?= base_url('dashboard/admin/add_tag') ?>">Data Tag Produk</a></li>
+			<li><a href="<?= base_url('dashboard/admin/add_category') ?>">Data Kategori Produk</a></li>
 			<li><a href="form_upload.html">Form Upload</a></li>
 			<li><a href="form_buttons.html">Form Buttons</a></li>
 		</ul>

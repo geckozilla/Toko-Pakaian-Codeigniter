@@ -81,14 +81,14 @@ class Admin_Model extends CI_Model
 
     public function updateStatusTag($id, $status)
     {
-        $this->db->where('id_tags_produk', $id);
+        $this->db->where('id_tags', $id);
         $this->db->update('tags', ['active' => $status]);
         return $this->db->affected_rows();
     }
 
     public function deleteTag($id)
     {
-        $this->db->delete('tags', ['id_tags_produk' => $id]);
+        $this->db->delete('tags', ['id_tags' => $id]);
         return $this->db->affected_rows();
     }
     // @end Tag Produk

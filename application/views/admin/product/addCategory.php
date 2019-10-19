@@ -1,210 +1,215 @@
 <!DOCTYPE html>
-
 <html lang="en">
+  <head>
+	<?php $this->load->view('admin/_partials/admin_header') ?>
+	    <!-- Datatables -->
+		<link href="<?= base_url('assets/gentelella/') ?>vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="<?= base_url('assets/gentelella/') ?>vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="<?= base_url('assets/gentelella/') ?>vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="<?= base_url('assets/gentelella/') ?>vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="<?= base_url('assets/gentelella/') ?>vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+  </head>
 
-<!-- begin::Head -->
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="<?= base_url('welcome') ?>" class="site_title"><i class="fa fa-paw"></i> <span> Toko Millano</span></a>
+            </div>
 
-<head>
-    <?php $this->load->view('admin/_partials/admin_header') ?>
-</head>
+            <div class="clearfix"></div>
 
-<!-- end::Head -->
+            <!-- menu profile quick info & nama toko -->
+				<?php $this->load->view('admin/_partials/admin_pp') ?>
+            <!-- /menu profile quick info & nama toko -->
 
-<!-- begin::Body -->
+            <br/>
 
-<body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--fixed kt-subheader--enabled kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
+            <!-- sidebar menu -->
+			<?php $this->load->view('admin/_partials/admin_sidebar') ?>
+            <!-- /sidebar menu -->
 
-    <!-- begin:: Page -->
+          </div>
+        </div>
+        <!-- top navigation -->
+		<?php $this->load->view('admin/_partials/admin_topnav') ?>
+        <!-- /top navigation -->
 
-    <!-- begin:: Header Mobile -->
-    <?php $this->load->view('admin/_partials/admin_headerMobile') ?>
-    <!-- end:: Header Mobile -->
-    <div class="kt-grid kt-grid--hor kt-grid--root">
-        <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
+        <!-- page content -->
+        <?php if ($this->session->flashdata('message')) : ?>
+            <?= $this->session->flashdata('message'); ?>
+        <?php endif; ?>
+        <div class="right_col" role="main">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Data Tag Produk</h3>
+              </div>
 
-            <!-- begin:: Aside -->
-            <button class="kt-aside-close " id="kt_aside_close_btn"><i class="la la-close"></i></button>
-            <?php $this->load->view('admin/_partials/admin_fullSidebar') ?>
+              <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-            <!-- end:: Aside -->
-            <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
+            <div class="clearfix"></div>
 
-                <!-- begin:: Header -->
-                <?php $this->load->view('admin/_partials/admin_navbar') ?>
-                <!-- end:: Header -->
+            <div class="">
+              <div class="col-md-8 col-sm-8 col-xs-12">
+              <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Form Tambah Kategori </h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
 
-                <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
+                    <!-- start form for validation -->
+                    <form method="POST" action="">
+                      <label for="nama_tag">Nama Kategori (Satu kalimat, tanpa spasi) :</label>
+                      <input name="nama_cat" type="text" value="<?= set_value('nama_cat') ?>" class="form-control" required />
+                      <br>
+                          <label for="ket_tag">Keterangan Kategori (Max 50 kata, Min 8 kata) :</label>
+                          <textarea  name="ket_cat" type="text" value="<?= set_value('ket_cat') ?>" class="form-control" required></textarea>
+                          <br/>
+                          <div class="col-md-12 text-center">
+                            <button type="reset" class="btn btn-secondary">Batal</button>
+                            <button type="submit" name="submit" class="btn btn-primary">Tambah Kategori</button>
+                          </div>
 
-                    <!-- begin:: Subheader -->
-                    <?php $this->load->view('admin/_partials/admin_subheader') ?>
-                    <!-- end:: Subheader -->
+                    </form>
+                    <!-- end form for validations -->
 
-                    <!-- begin:: Content -->
-                    <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
-                        <div class="row">
-                            <div class="col-md-6">
+                  </div>
+                </div>
+              </div>
 
-                                <!--begin::Portlet-->
-                                <div class="kt-portlet">
-                                    <div class="kt-portlet__head">
-                                        <div class="kt-portlet__head-label">
-                                            <h3 class="kt-portlet__head-title">
-                                                Form Tanbah Kategori
-                                            </h3>
-                                        </div>
-                                    </div>
 
-                                    <?php if ($this->session->flashdata('message')) : ?>
-                                        <?= $this->session->flashdata('message'); ?>
-                                    <?php endif; ?>
-                                    <!--begin::Form-->
-                                    <form method="POST" action="">
-                                        <div class=" kt-portlet__body">
-                                            <div class="form-group form-group-last">
-                                                <div class="alert alert-secondary" role="alert">
-                                                    <div class="alert-icon"><i class="flaticon-warning kt-font-brand"></i></div>
-                                                    <div class="alert-text">
-                                                        The example form below demonstrates common HTML form elements that receive updated styles from Bootstrap with additional classes.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Name Kategori</label>
-                                                <?php $nama_cat = $this->freeM->validInvalid('nama_cat', 'submit') ?>
-                                                <input name="nama_cat" type="text" value="<?= set_value('nama_cat') ?>" class="form-control  <?= $nama_cat ?>">
-                                                <?= form_error('nama_cat', '<div class="invalid-feedback">', '</div>') ?>
-                                            </div>
-                                            <div class="form-group form-group-last">
-                                                <label>Keterangan Kategori</label>
-                                                <?php $ket_cat = $this->freeM->validInvalid('ket_cat', 'submit') ?>
-                                                <input name="ket_cat" type="text" value="<?= set_value('ket_cat') ?>" class="form-control  <?= $ket_cat ?>">
-                                                <?= form_error('ket_cat', '<div class="invalid-feedback">', '</div>') ?>
-                                            </div>
-                                        </div>
-                                        <div class="kt-portlet__foot">
-                                            <div class="kt-form__actions">
-                                                <button type="submit" name="submit" class="btn btn-primary">Tambah Kategori</button>
-                                                <button type="reset" class="btn btn-secondary">Cancel</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                    <!--end::Form-->
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="kt-portlet kt-portlet--height-fluid">
-                                    <div class="kt-portlet__head">
-                                        <div class="kt-portlet__head-label">
-                                            <h3 class="kt-portlet__head-title">
-                                                Daftar Kategori
-                                            </h3>
-                                        </div>
-                                        <div class="kt-portlet__head-toolbar">
-                                            <ul class="nav nav-pills nav-pills-sm nav-pills-label nav-pills-bold" role="tablist">
-                                                <li class="nav-item">
-                                                    <a class="nav-link active" data-toggle="tab" href="#kt_widget5_tab1_content" role="tab">
-                                                        Aktif
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" data-toggle="tab" href="#kt_widget5_tab2_content" role="tab">
-                                                        Tidak Aktif
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="kt-portlet__body">
-                                        <div class="tab-content">
-                                            <div class="tab-pane active" id="kt_widget5_tab1_content" aria-expanded="true">
-                                                <table class="table table-striped- table-bordered table-hover table-checkable" id="kt_table_1">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>ID</th>
-                                                            <th>Nama</th>
-                                                            <th>Keterangan</th>
-                                                            <th class="text-center noExport">Actions</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <?php
-                                                        foreach ($categoryAktif as $key) :  ?>
-                                                            <tr>
-                                                                <td><?= $key['id_cat'] ?></td>
-                                                                <td><?= $key['nama_cat'] ?></td>
-                                                                <td><?= $key['ket_cat'] ?></td>
-                                                                <td class="text-center">
-                                                                    <span class="dropdown">
-                                                                        <a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown" aria-expanded="true">
-                                                                            <i class="la la-ellipsis-h"></i>
-                                                                        </a>
-                                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                                            <button class="dropdown-item btnNonaktif" onclick="set_url('<?= site_url('dashboard/admin/deactive_category/' . encrypt_url($key['id_cat']))  ?>')" data-ket="meng nonaktifkan" data-toggle="modal" data-target="#kt_modal_1"><i class="la la-edit"></i> Nonaktifkan Kategori</button>
-                                                                            <button class="dropdown-item btnHapus" onclick="set_url('<?= site_url('dashboard/admin/delete_category/' . encrypt_url($key['id_cat']))  ?>')" data-ket="menghapus" data-toggle="modal" data-target="#kt_modal_1"><i class="la la-edit"></i> Hapus Kategori</button>
-                                                                        </div>
-                                                                    </span>
-                                                                </td>
-                                                            </tr>
-                                                        <?php endforeach; ?>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="tab-pane" id="kt_widget5_tab2_content">
-                                                <table class="table table-striped- table-bordered table-hover table-checkable" id="kt_table_2">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>ID</th>
-                                                            <th>Nama</th>
-                                                            <th>Keterangan</th>
-                                                            <th class="text-center noExport">Actions</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <?php
-                                                        foreach ($categoryNonaktif as $key) :  ?>
-                                                            <tr>
-                                                                <td><?= $key['id_cat'] ?></td>
-                                                                <td><?= $key['nama_cat'] ?></td>
-                                                                <td><?= $key['ket_cat'] ?></td>
-                                                                <td class="text-center">
-                                                                    <span class="dropdown">
-                                                                        <a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown" aria-expanded="true">
-                                                                            <i class="la la-ellipsis-h"></i>
-                                                                        </a>
-                                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                                            <button class="dropdown-item btnAktif" onclick="set_url('<?= site_url('dashboard/admin/reactive_category/' . encrypt_url($key['id_cat']))  ?>')" data-ket="mengaktifkan" data-toggle="modal" data-target="#kt_modal_1"><i class="la la-edit"></i> Aktifkan Kategori</button>
-                                                                            <button class="dropdown-item btnHapus1" onclick="set_url('<?= site_url('dashboard/admin/delete_category/' . encrypt_url($key['id_cat']))  ?>')" data-ket="menghapus" data-toggle="modal" data-target="#kt_modal_1"><i class="la la-edit"></i> Hapus Kategori</button>
-                                                                        </div>
-                                                                    </span>
-                                                                </td>
-                                                            </tr>
-                                                        <?php endforeach; ?>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+              <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2><i class="fa fa-bars"></i> Data Tags <small></small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+
+
+                    <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                      <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#tab_content11" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Aktif</a>
+                        </li>
+                        <li role="presentation" class=""><a href="#tab_content22" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Nonaktif</a>
+                        </li>
+                      </ul>
+                      <div id="myTabContent" class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade active in" id="tab_content11" aria-labelledby="home-tab">
+                            <div class="x_content">
+                                <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nama</th>
+                                        <th>Keterangan</th>
+                                        <th class="text-center noExport">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                foreach ($categoryAktif as $key) :  ?>
+                                    <tr>
+                                        <td><?= $key['id_cat'] ?></td>
+                                        <td><?= $key['nama_cat'] ?></td>
+                                        <td><?= $key['ket_cat'] ?></td>
+                                        <td class="text-center">
+                                            <li role="presentation" class="dropdown" style="list-style: none;">
+                                                <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+                                                    Pilih
+                                                    <span class="caret"></span>
+                                                </a>
+                                                <ul id="menu6" class="dropdown-menu animated fadeInDown" role="menu">
+                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#" class="btnNonaktif" onclick="set_url('<?= site_url('dashboard/admin/deactive_category/' . encrypt_url($key['id_cat']))  ?>')" data-ket="meng nonaktifkan" data-toggle="modal" data-target="#kt_modal_1">
+                                                        Nonaktifkan Kategori</a>
+                                                    </li>
+                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#" class="btnHapus" onclick="set_url('<?= site_url('dashboard/admin/delete_category/' . encrypt_url($key['id_cat']))  ?>')" data-ket="menghapus" data-toggle="modal" data-target="#kt_modal_1">
+                                                        Hapus Kategori</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                                </tbody>
+                                </table>
                             </div>
                         </div>
+                        <div role="tabpanel" class="tab-pane fade" id="tab_content22" aria-labelledby="profile-tab">
+                            <div class="x_content">
+                                <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nama</th>
+                                        <th>Keterangan</th>
+                                        <th class="text-center noExport">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                foreach ($categoryNonaktif as $key) :  ?>
+                                    <tr>
+                                        <td><?= $key['id_cat'] ?></td>
+                                        <td><?= $key['nama_cat'] ?></td>
+                                        <td><?= $key['ket_cat'] ?></td>
+                                        <td class="text-center">
+                                            <li role="presentation" class="dropdown" style="list-style: none;">
+                                                <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+                                                    Pilih
+                                                    <span class="caret"></span>
+                                                </a>
+                                                <ul id="menu6" class="dropdown-menu animated fadeInDown" role="menu">
+                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#" class="btnAktif" onclick="set_url('<?= site_url('dashboard/admin/reactive_category/' . encrypt_url($key['id_cat']))  ?>')" data-ket="mengaktifkan" data-toggle="modal" data-target="#kt_modal_1">
+                                                        Aktifkan Kategori</a>
+                                                    </li>
+                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#" class="btnHapus1" onclick="set_url('<?= site_url('dashboard/admin/delete_category/' . encrypt_url($key['id_cat']))  ?>')" data-ket="menghapus" data-toggle="modal" data-target="#kt_modal_1">
+                                                        Hapus Kategori</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                                </tbody>
+                                </table>
+                            </div>
+                        </div>
+                      </div>
                     </div>
-                    <!-- end:: Content -->
-                </div>
 
-                <?php $this->load->view('admin/_partials/admin_footer') ?>
+                  </div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+              </div>
             </div>
         </div>
-    </div>
 
-    <!-- end:: Page -->
-
-    <!-- begin::Scrolltop -->
-    <div id="kt_scrolltop" class="kt-scrolltop">
-        <i class="fa fa-arrow-up"></i>
-    </div>
-
-    <!-- end::Scrolltop -->
-    <!--begin::Modal-->
+        <!-- /page content -->
+<!--begin::Modal-->
     <div class="modal fade" id="kt_modal_1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -224,9 +229,28 @@
         </div>
     </div>
     <!--end::Modal-->
-    <?php $this->load->view('admin/_partials/admin_js') ?>
-    <script src="./assets/vendors/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
-    <script src="./assets/js/myJS/dataCategory.js" type="text/javascript"></script>
+        <!-- footer content -->
+        <?php $this->load->view('admin/_partials/admin_footer'); ?>
+        <!-- /footer content -->
+      </div>
+	</div>
+	<?php $this->load->view('admin/_partials/admin_js') ?>
+	<!-- Datatables -->
+	<script src="<?= base_url('assets/gentelella/') ?>vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="<?= base_url('assets/gentelella/') ?>vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="<?= base_url('assets/gentelella/') ?>vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="<?= base_url('assets/gentelella/') ?>vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="<?= base_url('assets/gentelella/') ?>vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="<?= base_url('assets/gentelella/') ?>vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="<?= base_url('assets/gentelella/') ?>vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="<?= base_url('assets/gentelella/') ?>vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="<?= base_url('assets/gentelella/') ?>vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="<?= base_url('assets/gentelella/') ?>vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="<?= base_url('assets/gentelella/') ?>vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="<?= base_url('assets/gentelella/') ?>vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="<?= base_url('assets/gentelella/') ?>vendors/jszip/dist/jszip.min.js"></script>
+    <script src="<?= base_url('assets/gentelella/') ?>vendors/pdfmake/build/pdfmake.min.js"></script>
+	<script src="<?= base_url('assets/gentelella/') ?>vendors/pdfmake/build/vfs_fonts.js"></script>
     <script>
         function set_url(url) {
             $('.fixHapus').attr('href', url);
@@ -250,8 +274,5 @@
             });
         });
     </script>
-</body>
-
-<!-- end::Body -->
-
+  </body>
 </html>
