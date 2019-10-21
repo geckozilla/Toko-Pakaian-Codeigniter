@@ -67,9 +67,17 @@ footer {
                   <input type="text"class="form-control"id="berat"name="berat"required="">
                 </div>
               </div>
+              <div class="form-group">
+                <label class="control-label col-sm-3">Service</label>
+                <div class="col-sm-12" id="response_ongkir">          
+                  <select class="form-control serviceRO" disabled="true">
+                    <option value="pilih"></option>
+                  </select>
+                </div>
+              </div>
               <div class="form-group">        
                 <div class="col-sm-offset-3 col-sm-8">
-                  <button type="submit"class="btn btn-default">Cek</button>
+                  <button type="submit" id="cekOngkir" class="btn btn-default">Cek</button>
                 </div>
               </div>
             </form>
@@ -104,12 +112,12 @@ footer {
               </div>
               <span class="text-muted">$8</span>
             </li>
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
-              <div>
-                <h6 class="my-0">Ongkir</h6>
-                <small class="text-muted"  id="response_ongkir"></small>
+            <li class="list-group-item d-flex justify-content-between lh-condensed" id="cartOngkir">
+              <div class="text-primary">
+                <h6 class="my-0" id="ROkurir"><strong>Biaya Kirim</strong></h6>
+                <small id="ROest">-</small>
               </div>
-              <span class="text-muted">$5</span>
+              <span  class="text-primary" id="ROcost">-</span>
             </li>
             <li class="list-group-item d-flex justify-content-between bg-light">
               <div class="text-success">

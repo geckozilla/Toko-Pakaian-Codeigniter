@@ -45,7 +45,7 @@ class Ongkir extends CI_Controller
   {
     $kota_tujuan = $_POST['kota_tujuan'];
     $kurir = $_POST['kurir'];
-    $berat = $_POST['berat']*1000;
+    $berat = $_POST['berat'] * 1000;
 
     curl_setopt_array($this->curl, array(
       CURLOPT_URL => "http://api.rajaongkir.com/starter/cost",
@@ -72,17 +72,6 @@ class Ongkir extends CI_Controller
     $provinsitujuan=$data['rajaongkir']['destination_details']['province'];
     $berat=$data['rajaongkir']['query']['weight']/1000;
     
-  
-          foreach ($data['rajaongkir']['results'][0]['costs'] as $value) {
-            echo "<tr>";
-            echo "<td>".$value['service']."</td>";
-            foreach ($value['cost'] as $tarif) {
-            echo "<td align='right'>Rp ". number_format($tarif['value'],2,',','.')."</td>";
-            echo "<td>".$tarif['etd']." D</td>";
-            }
-            
-            echo "</tr>";
-          }
+    echo json_encode($data['rajaongkir']['results'][0]['costs']);
   }
-
 }
