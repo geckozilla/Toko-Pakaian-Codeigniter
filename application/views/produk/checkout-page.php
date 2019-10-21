@@ -64,7 +64,7 @@ footer {
               <div class="form-group">
                 <label class="control-label col-sm-3">Berat (Kg)</label>
                 <div class="col-sm-12">          
-                  <input type="text"class="form-control"id="berat"name="berat"required="">
+                  <input type="text" class="form-control" id="berat" name="berat" required="" value='1' readonly>
                 </div>
               </div>
               <div class="form-group">
@@ -115,9 +115,9 @@ footer {
             <li class="list-group-item d-flex justify-content-between lh-condensed" id="cartOngkir">
               <div class="text-primary">
                 <h6 class="my-0" id="ROkurir"><strong>Biaya Kirim</strong></h6>
-                <small id="ROest">-</small>
+                <small id="ROest"></small>
               </div>
-              <span  class="text-primary" id="ROcost">-</span>
+              <span  class="text-primary" id="ROcost"></span>
             </li>
             <li class="list-group-item d-flex justify-content-between bg-light">
               <div class="text-success">

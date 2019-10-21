@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Ongkir extends CI_Controller
 {
-  private $apiRaja = 'd42e1d83854fba7dff785aa0cf76d85f';
+  private $apiRaja = 'd4de361f436ada84a3dfca282ff2552a';
   private $curl;
 
   public function __construct()
