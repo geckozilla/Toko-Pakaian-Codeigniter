@@ -246,8 +246,8 @@
       <!--Pagination-->
       <nav class="d-flex justify-content-center wow fadeIn">
         <ul class="pagination pg-blue">
-
-          <!--Arrow left-->
+        <?= $pagination ?>
+          <!-- Arrow left
           <li class="page-item disabled">
             <a class="page-link" href="#" aria-label="Previous">
               <span aria-hidden="true">&laquo;</span>
@@ -278,7 +278,7 @@
               <span aria-hidden="true">&raquo;</span>
               <span class="sr-only">Next</span>
             </a>
-          </li>
+          </li> -->
         </ul>
       </nav>
       <!--Pagination-->

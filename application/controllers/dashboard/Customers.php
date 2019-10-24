@@ -8,7 +8,7 @@ class Customers extends CI_Controller
     {
         parent::__construct();
         if (!$this->session->has_userdata('email')) {
-            redirect('welcome');
+            redirect('home');
         }
     }
 

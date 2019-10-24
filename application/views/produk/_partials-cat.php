@@ -13,8 +13,8 @@
 
   <!-- Links -->
   <ul class="navbar-nav mr-auto">
-    <li class="nav-item <?= ($this->uri->segment(1) == 'welcome' OR $this->uri->segment(1) == '') ? 'active' :''; ?>">
-      <a class="nav-link" href="<?= base_url('welcome') ?>">All
+    <li class="nav-item <?= ($this->uri->segment(1) == 'home' OR $this->uri->segment(1) == '') ? 'active' :''; ?>">
+      <a class="nav-link" href="<?= base_url('home') ?>">All
       </a>
     </li>
     <?php foreach($cat as $key): ?>

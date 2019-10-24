@@ -51,7 +51,7 @@ class Produk_Model extends CI_Model
         return $this->db->get_where('kategori', ['active' => 1])->result_array();
     }
 
-    public function cariProduk($jenis, $nama)
+    public function cariProduk($jenis, $nama, $limit, $start)
     {
         if($jenis == 'kategori'){
             $namaField = 'kategori.nama_cat';
@@ -60,10 +60,27 @@ class Produk_Model extends CI_Model
         }
         $this->db->join('detail_produk', 'detail_produk.id_produk=produk.id_produk');
         $this->db->join('kategori', 'kategori.id_cat=produk.id_cat');
+        $this->db->limit($limit, $start);
         $kondisi = [
             'detail_produk.aktif' => 1,
             $namaField => ucwords($nama)
         ];
         return $this->db->get_where('produk', $kondisi)->result_array();
+    }
+
+    public function hitungProdukKategori($jenis, $nama)
+    {
+        if($jenis == 'kategori'){
+            $namaField = 'kategori.nama_cat';
+        } else {
+            $namaField = 'tags.nama_tag';
+        }
+        $this->db->select('kategori.nama_cat');
+        $this->db->from('produk');
+        $this->db->join('detail_produk', 'detail_produk.id_produk=produk.id_produk');
+        $this->db->join('kategori', 'kategori.id_cat=produk.id_cat');
+        $this->db->where('detail_produk.aktif', 1);
+        $this->db->where($namaField, $nama);
+        return $this->db->count_all_results();
     }
 }

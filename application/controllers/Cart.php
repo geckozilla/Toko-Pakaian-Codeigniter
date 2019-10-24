@@ -6,7 +6,7 @@ class Cart extends CI_Controller
 
   public function index()
   {
-    redirect('welcome');
+    redirect('home');
   }
 
   public function tambahKeranjang() //fungsi Add To Cart

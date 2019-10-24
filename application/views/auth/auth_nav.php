@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand waves-effect" href="<?= base_url('welcome') ?>">
+    <a class="navbar-brand waves-effect" href="<?= base_url('home') ?>">
         <strong class="blue-text">Home</strong>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

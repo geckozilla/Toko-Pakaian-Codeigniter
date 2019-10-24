@@ -11,4 +11,12 @@ class Home_Model extends CI_Model
         $this->db->limit($limit, $start);
         return $this->db->get_where('produk', ['detail_produk.aktif' => 1])->result_array();
     }
+
+    public function hitungProduk()
+    {
+        $this->db->from('produk');
+        $this->db->join('detail_produk', 'detail_produk.id_produk=produk.id_produk');
+        $this->db->where('detail_produk.aktif', 1);
+        return $this->db->count_all_results();
+    }
 }

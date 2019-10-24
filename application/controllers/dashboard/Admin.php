@@ -16,7 +16,7 @@ class Admin extends CI_Controller
       $data['image'] = $this->freeM->getImageUser(); //Load Image user
       $this->load->vars($data);
     } else {
-      redirect('welcome');
+      redirect('home');
     }
   }
 

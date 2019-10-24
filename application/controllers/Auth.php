@@ -28,7 +28,7 @@ class Auth extends CI_Controller
                 $this->_subLogin();
             }
         } else {
-            redirect('welcome');
+            redirect('home');
         }
     }
 
@@ -114,7 +114,7 @@ class Auth extends CI_Controller
                 }
             }
         } else {
-            redirect('welcome');
+            redirect('home');
         }
     }
 
@@ -128,7 +128,7 @@ class Auth extends CI_Controller
             redirect('auth/login');
             // $this->session->sess_destroy();
         } else {
-            redirect('welcome');
+            redirect('home');
         }
     }
 }

@@ -9,7 +9,7 @@
     <div class="container">
 
       <!-- Brand -->
-      <a class="navbar-brand waves-effect" href="<?= base_url('welcome') ?>">
+      <a class="navbar-brand waves-effect" href="<?= base_url('home') ?>">
         <strong class="blue-text">Home</strong>
       </a>
 
