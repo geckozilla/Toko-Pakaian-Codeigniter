@@ -8,7 +8,6 @@ class Produk extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Produk_Model');
-        $this->load->model('Ongkir_Model');
     }
 
     public function index()
@@ -40,7 +39,8 @@ class Produk extends CI_Controller
             redirect('welcome');
         } else {
             if ($this->session->email) {
-                $this->load->view('produk/checkout-page');
+                $data['title'] = 'HepiMart - Pembayaran';
+                $this->load->view('produk/checkout-page', $data);
             } else {
                 $this->session->set_userdata('checkout_url', current_url());
                 redirect('auth/login');
@@ -48,8 +48,14 @@ class Produk extends CI_Controller
         }
     }
 
-    public function getOngkir()
-    {
-        $this->Ongkir_Model->getKota();
+    public function cari($jenis = null, $nama = null)
+    {   
+        $jenis = $this->uri->segment(3);
+		$data['tags'] = $this->Produk_Model->getAllTags();
+		$data['cat'] = $this->Produk_Model->getAllCat();
+        $data['title'] = 'HepiMart - Pencarian';
+        $data['produk'] = $this->Produk_Model->cariProduk($jenis, $nama);
+        $this->load->view('produk/cari-produk', $data);
     }
+
 }

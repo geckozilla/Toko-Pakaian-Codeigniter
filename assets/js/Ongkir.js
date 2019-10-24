@@ -12,7 +12,7 @@ $( document ).ready(function() {
        dataType: "html",
        url: BASE_URL + 'ongkir/data_kota/kotatujuan',
        success: function(msg){
-       $("select#kota_asal").html(msg);                                                     
+        $("select#kota_asal").html(msg);                                                     
        }
      });    
    
@@ -21,7 +21,7 @@ $( document ).ready(function() {
        dataType: "html",
        url: BASE_URL + 'ongkir/data_kota/kotatujuan',
        success: function(msg){
-       $("select#kota_tujuan").html(msg);                                                     
+          $("select#kota_tujuan").html(msg);                                                     
        }
     });
   

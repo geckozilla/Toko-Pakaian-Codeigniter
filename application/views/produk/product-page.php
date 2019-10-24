@@ -47,7 +47,7 @@
 
             <div class="mb-3">
               <p class="lead font-weight-bold">Kategori
-                <a href="">
+                <a href="<?= base_url('produk/cari/kategori/'.strtolower($produk['nama_cat'])) ?>">
                   <span class="badge red mr-1"><?= $produk['nama_cat'] ?></span>
                 </a>
               </p>
@@ -155,16 +155,7 @@
   <!--Main layout-->
 
   <!--Footer-->
-  <footer class="page-footer text-center font-small mt-4 wow fadeIn">
 
-    <!--Copyright-->
-    <div class="footer-copyright py-3">
-      © 2019 Copyright:
-      <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> HepiMart.com </a>
-    </div>
-    <!--/.Copyright-->
-
-  </footer>
   <!--/.Footer-->
 
   <!-- SCRIPTS -->

@@ -33,6 +33,11 @@ class Ongkir extends CI_Controller
       $err = curl_error($this->curl);
       curl_close($this->curl);
       $data = json_decode($response, true);
+
+      // echo '<pre>';    Cek daily limit
+      // var_dump($data);
+      // echo '</pre>'; die();
+
       echo "<option></option>";
       for($i=0; $i < count($data['rajaongkir']['results']); $i++) { 
           echo "<option value='".$data['rajaongkir']['results'][$i]['city_id']."'>".$data['rajaongkir']['results'][$i]['city_name']."</option>";

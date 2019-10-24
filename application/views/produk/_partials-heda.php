@@ -3,7 +3,7 @@
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <link rel="shortcut icon" href="<?= base_url('assets/SBAdmin2/img/') ?>favicon.ico" type="image/x-icon">
 <link rel="icon" href="<?= base_url('assets/SBAdmin2/img/') ?>favicon.ico" type="image/x-icon">
-<title>Home - Hepi Mart</title>
+<title><?= $title ?></title>
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 <!-- Bootstrap core CSS -->

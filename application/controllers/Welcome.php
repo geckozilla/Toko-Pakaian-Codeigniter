@@ -7,10 +7,14 @@ class Welcome extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Home_Model');
+		$this->load->model('Produk_Model');
 	}
 
 	public function index()
 	{
+		$data['tags'] = $this->Produk_Model->getAllTags();
+		$data['cat'] = $this->Produk_Model->getAllCat();
+		$data['title'] = 'HepiMart - Home';
 		$data['tesUser'] = $this->session->email;
 		$data['produk'] = $this->Home_Model->getProduk();
 		$this->load->view('home', $data);
