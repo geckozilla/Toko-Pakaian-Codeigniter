@@ -49,10 +49,17 @@
       <!--Navbar-->
       <?php $this->load->view('produk/_partials-cat') ?>
       <!--/.Navbar-->
-      <?php if($totData == 0) { ?>
+      <?php if($totData >= 1){ ?>
+      <div class="alert alert-info alert-dismissible fade show" role="alert">
+         Hasil pencarian produk dengan nama <strong><?= ucwords($this->uri->segment(3)) ?></strong>, ditemukan<strong> <?= $totData ?>. </strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <?php } else { ?>
         <div class="alert alert-danger text-center" role="alert">
-        Produk dengan kategori <strong><?= ucwords($this->uri->segment(4)) ?></strong>, 
-        <h3>Kosong!</h3>
+        Hasil pencarian produk dengan nama <strong><?= ucwords($this->uri->segment(3)) ?></strong>, 
+        <h3>tidak ditemukan!</h3>
           <h6><a class="text-info" href="<?= base_url() ?>">Home</a></h6>
         </div>
       <?php } ?>

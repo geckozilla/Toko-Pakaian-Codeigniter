@@ -31,13 +31,13 @@ class Produk_Model extends CI_Model
         }
     }
 
-    public function getProduk()
-    {
-        $this->db->join('detail_produk', 'detail_produk.id_produk=produk.id_produk');
-        $this->db->join('kategori', 'kategori.id_cat=produk.id_cat');
-        $this->db->limit();
-        return $this->db->get_where('produk', ['detail_produk.aktif' => 1])->result_array();
-    }
+    // public function getProduk()
+    // {
+    //     $this->db->join('detail_produk', 'detail_produk.id_produk=produk.id_produk');
+    //     $this->db->join('kategori', 'kategori.id_cat=produk.id_cat');
+    //     $this->db->limit();
+    //     return $this->db->get_where('produk', ['detail_produk.aktif' => 1])->result_array();
+    // }
 
     public function getAllTags()
     {   
@@ -66,6 +66,29 @@ class Produk_Model extends CI_Model
             $namaField => ucwords($nama)
         ];
         return $this->db->get_where('produk', $kondisi)->result_array();
+    }
+
+    public function cariProdukKeyword($keyword, $limit, $start)
+    {
+        $this->db->join('detail_produk', 'detail_produk.id_produk=produk.id_produk');
+        $this->db->join('kategori', 'kategori.id_cat=produk.id_cat');
+        $this->db->like('produk.nama_produk', $keyword);
+        $this->db->limit($limit, $start);
+        $kondisi = [
+            'detail_produk.aktif' => 1,
+        ];
+        return $this->db->get_where('produk', $kondisi)->result_array();
+    }
+
+    public function hitungProdukKeyword($keyword)
+    {
+        $this->db->select('produk.nama_produk');
+        $this->db->from('produk');
+        $this->db->join('detail_produk', 'detail_produk.id_produk=produk.id_produk');
+        $this->db->join('kategori', 'kategori.id_cat=produk.id_cat');
+        $this->db->where('detail_produk.aktif', 1);
+        $this->db->like('produk.nama_produk', $keyword);
+        return $this->db->count_all_results();
     }
 
     public function hitungProdukKategori($jenis, $nama)
