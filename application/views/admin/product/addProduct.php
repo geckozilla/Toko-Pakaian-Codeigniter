@@ -204,52 +204,17 @@
 											</div>
 										</div>
 										</div>
-										<div class="row">
-											<div class="col-md-12 col-xs-12">
-												<div class="x_panel">
-													<div class='col-sm-4'>
-														Foto 1
-														<div class="form-group">
-															<div class='input-group date' id='myDatepicker'>
-																<input type="file" name="foto1" class="form-control" />
-																<span class="input-group-addon">
-																<span class="glyphicon glyphicon-calendar"></span>
-																</span>
-															</div>
-														</div>
-													</div>
-
-													<div class='col-sm-4'>
-														Foto 2
-														<div class="form-group">
-															<div class='input-group date' id='myDatepicker2'>
-																<input type="file" name="foto2" class="form-control" />
-																<span class="input-group-addon">
-																<span class="glyphicon glyphicon-calendar"></span>
-																</span>
-															</div>
-														</div>
-													</div>
-													<div class='col-sm-4'>
-														Foto 3
-														<div class="form-group">
-															<div class='input-group date' id='myDatepicker2'>
-																<input type="file" name="foto3" class="form-control" />
-																<span class="input-group-addon">
-																<span class="glyphicon glyphicon-calendar"></span>
-																</span>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
 										<div class="col-md-12 text-center"> 
 											<button type="submit" name="submit" class="btn btn-success">Tambahkan Produk</button>
 										</div>
 										</form>
                     <!-- end form for validations -->
                   </div>
+									<?php
+										if ( $this->session->flashdata( 'error_msg' ) ) {
+											echo $this->session->flashdata('error_msg');
+										}
+									?>
                 </div>
               </div>
 						</div>

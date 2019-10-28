@@ -22,7 +22,6 @@ class Produk extends CI_Controller
             $data['produk'] = $this->Produk_Model->getDetail(decrypt_url($id));
             if ($data['produk']) {
                 $data['title'] = 'Produk - ' . ucwords($data['produk']['nama_produk']);
-                $data['fotoDll'] = explode(',', $data['produk']['gambar_dll']);
                 $data['ukuranNew'] = explode(', ', $data['produk']['ukuran']);
                 $data['tags'] = $this->Produk_Model->getTagsById(decrypt_url($id));
                 $this->load->view('produk/product-page', $data);

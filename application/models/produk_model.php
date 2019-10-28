@@ -31,14 +31,6 @@ class Produk_Model extends CI_Model
         }
     }
 
-    // public function getProduk()
-    // {
-    //     $this->db->join('detail_produk', 'detail_produk.id_produk=produk.id_produk');
-    //     $this->db->join('kategori', 'kategori.id_cat=produk.id_cat');
-    //     $this->db->limit();
-    //     return $this->db->get_where('produk', ['detail_produk.aktif' => 1])->result_array();
-    // }
-
     public function getAllTags()
     {   
         $this->db->select('nama_tag');

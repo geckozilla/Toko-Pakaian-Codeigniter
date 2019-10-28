@@ -76,9 +76,7 @@ class Admin extends CI_Controller
         foreach ($ukuran as $uk) {
           $newUk .= $uk . ', ';
         }
-        $gambar = $this->uploadFoto1() . ',' . $this->uploadFoto2() . ',' . $this->uploadFoto3();
         $detail = [
-          'gambar_dll' => $gambar,
           'stok' => $this->input->post('stok', true),
           'diskon' => $this->input->post('diskon', true),
           'ukuran' => $newUk,
@@ -100,7 +98,7 @@ class Admin extends CI_Controller
   {
     $config['upload_path']       = './assets/images/produk/';
     $config['allowed_types']     = 'gif|jpg|png|jpeg';
-    $config['max_size']          = 2048;
+    $config['max_size']          = 0;
     $config['remove_spaces']     = TRUE;
     $config['file_name']         = round(microtime(true) * 1000);
 
@@ -122,63 +120,7 @@ class Admin extends CI_Controller
       return $this->upload->data('file_name');
     } else {
       $this->freeM->getSweetAlert('message', 'Upss!', 'Foto utama Produk gagal diupload.', 'error');
-      redirect('dashboard/admin/add_product');
-    }
-  }
-
-  public function uploadFoto1()
-  {
-    $config['upload_path']       = './assets/images/produk/';
-    $config['allowed_types']     = 'gif|jpg|png|jpeg';
-    $config['max_size']          = 2048;
-    $config['remove_spaces']     = TRUE;
-    $config['file_name']         = round(microtime(true) * 1000);
-
-    $this->load->library('upload');
-    $this->upload->initialize($config);
-
-    if ($this->upload->do_upload('foto1')) {
-      return $this->upload->data('file_name');
-    } else {
-      $this->freeM->getSweetAlert('message', 'Upss!', 'Foto Produk1 gagal diupload.', 'error');
-      redirect('dashboard/admin/add_product');
-    }
-  }
-
-  public function uploadFoto2()
-  {
-    $config['upload_path']       = './assets/images/produk/';
-    $config['allowed_types']     = 'gif|jpg|png|jpeg';
-    $config['max_size']          = 2048;
-    $config['remove_spaces']     = TRUE;
-    $config['file_name']         = round(microtime(true) * 1000);
-
-    $this->load->library('upload');
-    $this->upload->initialize($config);
-
-    if ($this->upload->do_upload('foto2')) {
-      return $this->upload->data('file_name');
-    } else {
-      $this->freeM->getSweetAlert('message', 'Upss!', 'Foto Produk2 gagal diupload.', 'error');
-      redirect('dashboard/admin/add_product');
-    }
-  }
-
-  public function uploadFoto3()
-  {
-    $config['upload_path']       = './assets/images/produk/';
-    $config['allowed_types']     = 'gif|jpg|png|jpeg';
-    $config['max_size']          = 2048;
-    $config['remove_spaces']     = TRUE;
-    $config['file_name']         = round(microtime(true) * 1000);
-
-    $this->load->library('upload');
-    $this->upload->initialize($config);
-
-    if ($this->upload->do_upload('foto3')) {
-      return $this->upload->data('file_name');
-    } else {
-      $this->freeM->getSweetAlert('message', 'Upss!', 'Foto Produk3 gagal diupload.', 'error');
+      $this->session->set_flashdata( 'error_msg', $this->upload->display_errors() );
       redirect('dashboard/admin/add_product');
     }
   }
@@ -212,7 +154,6 @@ class Admin extends CI_Controller
         'create_date' => $produk['create_date'],
         'delete_at' => $produk['delete_at'],
         'id_detail' => $produk['id_detail'],
-        'gambar_dll' => $produk['gambar_dll'],
         'stok' => $produk['stok'],
         'diskon' => $produk['diskon'],
         'ukuran' => $produk['ukuran'],

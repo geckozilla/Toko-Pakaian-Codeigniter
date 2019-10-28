@@ -12,7 +12,7 @@
   <!-- End Nav -->
 
   <!--Main layout-->
-  <main class="mt-5 pt-4">
+  <main class="mt-4 pt-4">
     <div class="container dark-grey-text mt-5">
 
       <!--Grid row-->
@@ -125,7 +125,7 @@
         <!--Grid column-->
         <div class="col-md-6 text-center">
 
-          <h4 class="my-4 h4">Foto Lainnya</h4>
+          <h4 class="my-4 h4">Produk lainnya dari kategori yang sama</h4>
 
           <!-- <p>dfsdfd.</p> -->
 
@@ -137,16 +137,36 @@
 
       <!--Grid row-->
       <div class="row wow fadeIn">
-
         <!--Grid column-->
-        <?php foreach ($fotoDll as $pic) : ?>
-          <div class="col-lg-4 col-md-12 mb-4">
-
-            <img src="<?= base_url('assets/images/produk/' . $pic) ?>" class="img-fluid" alt="">
-
-          </div>
-        <?php endforeach; ?>
-        <!--Grid column-->
+            <div class="card m-3" style="max-width: 520px;">
+              <div class="row no-gutters">
+                <div class="col-md-4">
+                  <img src="<?= base_url('assets/images/produk/' . $produk['gambar_produk']) ?>" class="card-img" alt="...">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-muted font-weight-bold blue-text"><h4>Rp <?= number_format($produk['harga_produk'], 0, ',', '.') ?></h4></small></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card m-3" style="max-width: 520px;">
+              <div class="row no-gutters">
+                <div class="col-md-4">
+                  <img src="<?= base_url('assets/images/produk/' . $produk['gambar_produk']) ?>" class="card-img" alt="...">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-muted font-weight-bold blue-text"><h4>Rp <?= number_format($produk['harga_produk'], 0, ',', '.') ?></h4></small></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+        <!--Grid column
       </div>
       <!--Grid row-->
 
@@ -155,7 +175,17 @@
   <!--Main layout-->
 
   <!--Footer-->
+  <footer class="page-footer text-center font-small mt-4 wow fadeIn">
 
+
+
+    <div class="footer-copyright py-3">
+      © 2019 Copyright:
+      <a href="#" target="_blank"> rahmaap__ </a>
+    </div>
+
+
+  </footer>
   <!--/.Footer-->
 
   <!-- SCRIPTS -->

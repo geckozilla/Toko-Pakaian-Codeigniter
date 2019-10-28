@@ -124,7 +124,17 @@
   <!--Main layout-->
 
   <!--Footer-->
+  <footer class="page-footer text-center font-small mt-4 wow fadeIn">
 
+
+
+    <div class="footer-copyright py-3">
+      © 2019 Copyright:
+      <a href="#" target="_blank"> rahmaap__ </a>
+    </div>
+
+
+  </footer>
   <!--/.Footer-->
 
   <!-- SCRIPTS -->
