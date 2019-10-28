@@ -78,6 +78,7 @@ class Produk extends CI_Controller
 
     public function cari_produk($keyword = null)
     {
+        $keyword = $this->input->post('keyword');
         if($keyword == null){ redirect('home'); }
 		$data['tags'] = $this->Produk_Model->getAllTags();
 		$data['cat'] = $this->Produk_Model->getAllCat();

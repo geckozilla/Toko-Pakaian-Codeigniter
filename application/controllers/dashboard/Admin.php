@@ -121,7 +121,7 @@ class Admin extends CI_Controller
 
       return $this->upload->data('file_name');
     } else {
-      $this->freeM->getSweetAlert('message', 'Upss!', 'Foto Produk gagal diupload.', 'error');
+      $this->freeM->getSweetAlert('message', 'Upss!', 'Foto utama Produk gagal diupload.', 'error');
       redirect('dashboard/admin/add_product');
     }
   }
@@ -140,7 +140,7 @@ class Admin extends CI_Controller
     if ($this->upload->do_upload('foto1')) {
       return $this->upload->data('file_name');
     } else {
-      $this->freeM->getSweetAlert('message', 'Upss!', 'Foto Produk gagal diupload.', 'error');
+      $this->freeM->getSweetAlert('message', 'Upss!', 'Foto Produk1 gagal diupload.', 'error');
       redirect('dashboard/admin/add_product');
     }
   }
@@ -159,7 +159,7 @@ class Admin extends CI_Controller
     if ($this->upload->do_upload('foto2')) {
       return $this->upload->data('file_name');
     } else {
-      $this->freeM->getSweetAlert('message', 'Upss!', 'Foto Produk gagal diupload.', 'error');
+      $this->freeM->getSweetAlert('message', 'Upss!', 'Foto Produk2 gagal diupload.', 'error');
       redirect('dashboard/admin/add_product');
     }
   }
@@ -178,7 +178,7 @@ class Admin extends CI_Controller
     if ($this->upload->do_upload('foto3')) {
       return $this->upload->data('file_name');
     } else {
-      $this->freeM->getSweetAlert('message', 'Upss!', 'Foto Produk gagal diupload.', 'error');
+      $this->freeM->getSweetAlert('message', 'Upss!', 'Foto Produk3 gagal diupload.', 'error');
       redirect('dashboard/admin/add_product');
     }
   }

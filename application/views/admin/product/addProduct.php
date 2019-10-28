@@ -211,7 +211,7 @@
 														Foto 1
 														<div class="form-group">
 															<div class='input-group date' id='myDatepicker'>
-																<input type="file" required name="foto1" class="form-control" />
+																<input type="file" name="foto1" class="form-control" />
 																<span class="input-group-addon">
 																<span class="glyphicon glyphicon-calendar"></span>
 																</span>
@@ -223,7 +223,7 @@
 														Foto 2
 														<div class="form-group">
 															<div class='input-group date' id='myDatepicker2'>
-																<input type="file" required name="foto2" class="form-control" />
+																<input type="file" name="foto2" class="form-control" />
 																<span class="input-group-addon">
 																<span class="glyphicon glyphicon-calendar"></span>
 																</span>
@@ -234,7 +234,7 @@
 														Foto 3
 														<div class="form-group">
 															<div class='input-group date' id='myDatepicker2'>
-																<input type="file" required name="foto3" class="form-control" />
+																<input type="file" name="foto3" class="form-control" />
 																<span class="input-group-addon">
 																<span class="glyphicon glyphicon-calendar"></span>
 																</span>

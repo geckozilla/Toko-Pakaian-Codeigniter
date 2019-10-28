@@ -25,9 +25,9 @@
   </ul>
   <!-- Links -->
 
-  <form class="form-inline">
+  <form action="<?= base_url('produk/cari_produk') ?>" method="post" class="form-inline">
     <div class="md-form my-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+      <input class="form-control mr-sm-2" type="text" name="keyword" placeholder="Search" aria-label="Search">
     </div>
   </form>
 </div>
