@@ -51,14 +51,14 @@
       <!--/.Navbar-->
       <?php if($totData >= 1){ ?>
       <div class="alert alert-info alert-dismissible fade show" role="alert">
-         Hasil pencarian produk dengan nama <strong><?= ucwords($this->uri->segment(3)) ?></strong>, ditemukan<strong> <?= $totData ?>. </strong>
+         Hasil pencarian produk dengan nama <strong><?= str_replace('%20',' ',ucwords(ucwords($this->uri->segment(3)))) ?></strong>, ditemukan<strong> <?= $totData ?>. </strong>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <?php } else { ?>
         <div class="alert alert-danger text-center" role="alert">
-        Hasil pencarian produk dengan nama <strong><?= ucwords($this->uri->segment(3)) ?></strong>, 
+        Hasil pencarian produk dengan nama <strong><?= str_replace('%20',' ',ucwords(ucwords($this->uri->segment(3)))) ?></strong>, 
         <h3>tidak ditemukan!</h3>
           <h6><a class="text-info" href="<?= base_url() ?>">Home</a></h6>
         </div>
@@ -131,7 +131,7 @@
   <!--Main layout-->
 
   <!--Footer-->
-  <footer class="page-footer text-center font-small mt-4 wow fadeIn">
+  <!-- <footer class="page-footer text-center font-small mt-4 wow fadeIn">
 
 
 
@@ -141,7 +141,7 @@
     </div>
 
 
-  </footer>
+  </footer> -->
   <!--/.Footer-->
 
   <!-- SCRIPTS -->

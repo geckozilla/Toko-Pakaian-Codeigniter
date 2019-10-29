@@ -98,4 +98,28 @@ class Produk_Model extends CI_Model
         $this->db->where($namaField, $nama);
         return $this->db->count_all_results();
     }
+
+    public function produkLainnya($id)
+    {
+        $this->db->select(['kategori.nama_cat','produk.unik_produk']);
+        $this->db->from('produk');
+        $this->db->join('kategori','kategori.id_cat=produk.id_cat');
+        $this->db->where('produk.unik_produk', $id);
+        $kategori = $this->db->get()->row_array();
+        if($kategori != null){
+            $this->db->select('*')->limit(6);
+            $this->db->order_by('produk.id_produk', 'RANDOM');
+            $this->db->join('kategori', 'kategori.id_cat=produk.id_cat');
+            $this->db->join('detail_produk', 'detail_produk.id_produk=produk.id_produk');
+            $this->db->where('produk.unik_produk !=', $kategori['unik_produk']);
+            $this->db->where('detail_produk.aktif', 1);
+            return $this->db->get_where('produk',['kategori.nama_cat' => $kategori['nama_cat']])->result_array();
+            // die($this->db->last_query());
+        }
+    }
 }
+
+// echo '<pre>';
+// var_dump($tes);
+// echo '</pre>';
+// die;

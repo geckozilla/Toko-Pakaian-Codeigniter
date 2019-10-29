@@ -138,32 +138,27 @@
       <!--Grid row-->
       <div class="row wow fadeIn">
         <!--Grid column-->
-            <div class="card m-3" style="max-width: 520px;">
+          <?php foreach($produkLain as $items): ?>
+            <div class="card m-3 blogBox moreBox" style="max-width: 520px;max-height:200px;display: none;">
+              <a href="<?= base_url('produk/detail/' . encrypt_url($items['unik_produk'])) ?>">
               <div class="row no-gutters">
                 <div class="col-md-4">
-                  <img src="<?= base_url('assets/images/produk/' . $produk['gambar_produk']) ?>" class="card-img" alt="...">
+                  <img src="<?= base_url('assets/images/produk/' . $items['gambar_produk']) ?>" class="card-img" alt="...">
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text"><small class="text-muted font-weight-bold blue-text"><h4>Rp <?= number_format($produk['harga_produk'], 0, ',', '.') ?></h4></small></p>
+                    <h5 class="card-title text-muted"><?= $items['nama_produk'] ?></h5>
+                    <p class="card-text ket_produk"><?= (strlen($items['ket_produk']) >= 85)? substr($items['ket_produk'],0,85).'...' : substr($items['ket_produk'],0,85) ; ?></p>
+                    <p class="card-text"><small class="text-muted font-weight-bold blue-text"><h4>Rp <?= number_format($items['harga_produk'], 0, ',', '.') ?></h4></small></p>
                   </div>
                 </div>
               </div>
+              </a>
             </div>
-            <div class="card m-3" style="max-width: 520px;">
-              <div class="row no-gutters">
-                <div class="col-md-4">
-                  <img src="<?= base_url('assets/images/produk/' . $produk['gambar_produk']) ?>" class="card-img" alt="...">
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text"><small class="text-muted font-weight-bold blue-text"><h4>Rp <?= number_format($produk['harga_produk'], 0, ',', '.') ?></h4></small></p>
-                  </div>
-                </div>
+          <?php endforeach; ?>
+            <div class="col-md-12 text-center mb-5">
+              <div id="loadMore" style="">
+                <button type="button" class="btn btn-secondary btn-md my-0 p">Lainnya</button>
               </div>
             </div>
         <!--Grid column
@@ -202,6 +197,20 @@
   <script type="text/javascript">
     // Animations initialization
     new WOW().init();
+
+    $( document ).ready(function () {
+      $('.moreBox').slice(0, 2).show();
+        if ($('.blogBox:hidden').length != 0) {
+          $('#loadMore').show();
+        }   
+        $('#loadMore').on('click', function (e) {
+          e.preventDefault();
+          $('.moreBox:hidden').slice(0, 2).slideDown();
+          if ($('.moreBox:hidden').length == 0) {
+            $('#loadMore').fadeOut('slow');
+          }
+      });
+    });
   </script>
 </body>
 

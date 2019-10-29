@@ -256,7 +256,7 @@
   <!--Main layout-->
 
   <!--Footer-->
-  <!-- <footer class="page-footer text-center font-small mt-4 wow fadeIn">
+  <footer class="page-footer text-center font-small mt-4 wow fadeIn">
 
 
 
@@ -266,7 +266,7 @@
     </div>
 
 
-  </footer> -->
+  </footer>
   <!--/.Footer-->
 
   <!-- SCRIPTS -->
