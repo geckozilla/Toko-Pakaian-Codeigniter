@@ -45,7 +45,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Data Tag Produk</h3>
+                <h3>Data Kategori Produk</h3>
               </div>
 
               <div class="title_right">
@@ -148,6 +148,14 @@
                                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#" class="btnHapus" onclick="set_url('<?= site_url('dashboard/admin/delete_category/' . encrypt_url($key['id_cat']))  ?>')" data-ket="menghapus" data-toggle="modal" data-target="#kt_modal_1">
                                                         Hapus Kategori</a>
                                                     </li>
+                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#" class="btnEdit" data-toggle="modal" data-target=".bs-example-modal-lg" 
+                                                        data-toggle="modal"
+                                                        data-id="<?= $key['id_cat'] ?>"
+                                                        data-namaold="<?= $key['nama_cat'] ?>"
+                                                        data-ketold="<?= $key['ket_cat'] ?>"
+                                                        >
+                                                        Edit Cat</a>
+                                                    </li>
                                                 </ul>
                                             </li>
                                         </td>
@@ -187,6 +195,14 @@
                                                     </li>
                                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#" class="btnHapus1" onclick="set_url('<?= site_url('dashboard/admin/delete_category/' . encrypt_url($key['id_cat']))  ?>')" data-ket="menghapus" data-toggle="modal" data-target="#kt_modal_1">
                                                         Hapus Kategori</a>
+                                                    </li>
+                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#" class="btnEdit1" data-toggle="modal" data-target=".bs-example-modal-lg" 
+                                                        data-toggle="modal"
+                                                        data-id="<?= $key['id_cat'] ?>"
+                                                        data-namaold="<?= $key['nama_cat'] ?>"
+                                                        data-ketold="<?= $key['ket_cat'] ?>"
+                                                        >
+                                                        Edit Cat</a>
                                                     </li>
                                                 </ul>
                                             </li>
@@ -229,6 +245,35 @@
         </div>
     </div>
     <!--end::Modal-->
+    <!-- Large modal -->
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">Edit Kategori <span class="text-danger nama-target"></span></h4>
+          </div>
+          <div class="modal-body">
+            <form method="POST" action="<?= base_url('dashboard/admin/updateCat') ?>">
+              <label for="nama_cat_new">Nama Kategori (Satu kalimat, tanpa spasi) :</label>
+              <input name="id_cat_new" type="hidden" value="" class="form-control id_cat_new" required />
+              <input name="nama_cat_new" type="text" value="" class="form-control nama_cat_new" required />
+              <br>
+              <label for="ket_cat">Keterangan Kategori (Max 50 kata, Min 8 kata) :</label>
+              <textarea name="ket_cat_new" type="text" value="" class="form-control ket_cat_new" required></textarea>
+              <br/>
+              <div class="col-md-12 text-center">
+                <button type="reset" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                <button type="submit" name="submit" class="btn btn-primary">Edit Kategori</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Large modal -->
         <!-- footer content -->
         <?php $this->load->view('admin/_partials/admin_footer'); ?>
         <!-- /footer content -->
@@ -271,6 +316,24 @@
             $('.btnNonaktif').click(function() {
                 const ket = $(this).attr('data-ket');
                 $('#ket_modal').text('Anda yakin ingin ' + ket + ' data kategori ini?');
+            });
+            $('.btnEdit').on('click', function() {
+                let id = $(this).data('id');
+                let nama = $(this).data('namaold');
+                let ket = $(this).data('ketold');
+                $('.id_cat_new').val(id);
+                $('.nama_cat_new').val(nama);
+                $('.ket_cat_new').val(ket);
+                $('.nama-target').text(nama);
+            });
+            $('.btnEdit1').on('click', function() {
+                let id = $(this).data('id');
+                let nama = $(this).data('namaold');
+                let ket = $(this).data('ketold');
+                $('.id_cat_new').val(id);
+                $('.nama_cat_new').val(nama);
+                $('.ket_cat_new').val(ket);
+                $('.nama-target').text(nama);
             });
         });
     </script>

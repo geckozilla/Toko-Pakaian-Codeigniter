@@ -148,6 +148,14 @@
                                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#" class="btnHapus" onclick="set_url('<?= site_url('dashboard/admin/delete_tag/' . encrypt_url($key['id_tags']))  ?>')" data-ket="menghapus" data-toggle="modal" data-target="#kt_modal_1">
                                                         Hapus Tag</a>
                                                     </li>
+                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#" class="btnEdit" data-toggle="modal" data-target=".bs-example-modal-lg" 
+                                                        data-toggle="modal"
+                                                        data-id="<?= $key['id_tags'] ?>"
+                                                        data-namaold="<?= $key['nama_tag'] ?>"
+                                                        data-ketold="<?= $key['ket_tag'] ?>"
+                                                        >
+                                                        Edit Tag</a>
+                                                    </li>
                                                 </ul>
                                             </li>
                                         </td>
@@ -188,6 +196,14 @@
                                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#" class="btnHapus1" onclick="set_url('<?= site_url('dashboard/admin/delete_tag/' . encrypt_url($key['id_tags']))  ?>')" data-ket="menghapus" data-toggle="modal" data-target="#kt_modal_1">
                                                         Hapus Tag</a>
                                                     </li>
+                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#" class="btnEdit1" data-toggle="modal" data-target=".bs-example-modal-lg" 
+                                                        data-toggle="modal"
+                                                        data-id="<?= $key['id_tags'] ?>"
+                                                        data-namaold="<?= $key['nama_tag'] ?>"
+                                                        data-ketold="<?= $key['ket_tag'] ?>"
+                                                        >
+                                                        Edit Tag</a>
+                                                    </li>
                                                 </ul>
                                             </li>
                                         </td>
@@ -207,9 +223,9 @@
               </div>
             </div>
         </div>
-
+        
         <!-- /page content -->
-<!--begin::Modal-->
+        <!--begin::Modal-->
          <div class="modal fade" id="kt_modal_1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -228,6 +244,37 @@
                 </div>
             </div>
         </div>
+        <!-- modal -->
+
+        <!-- Large modal -->
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Edit tag <span class="text-danger nama-target"></span></h4>
+              </div>
+              <div class="modal-body">
+                <form method="POST" action="<?= base_url('dashboard/admin/updateTag') ?>">
+                  <label for="nama_tag">Nama Tag (Satu kalimat, tanpa spasi) :</label>
+                  <input name="id_tag_new" type="hidden" value="" class="form-control id_tag_new" required />
+                  <input name="nama_tag_new" type="text" value="" class="form-control nama_tag_new" required />
+                  <br>
+                  <label for="ket_tag">Keterangan Tag (Max 50 kata, Min 8 kata) :</label>
+                  <textarea name="ket_tag_new" type="text" value="" class="form-control ket_tag_new" required></textarea>
+                  <br/>
+                  <div class="col-md-12 text-center">
+                    <button type="reset" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="submit" name="submit" class="btn btn-primary">Edit Tag</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Large modal -->
         <!-- footer content -->
         <?php $this->load->view('admin/_partials/admin_footer'); ?>
         <!-- /footer content -->
@@ -255,21 +302,39 @@
             $('.fixHapus').attr('href', url);
         }
         $(document).ready(function() {
-            $('.btnAktif').on("click", function() {
+            $('.btnAktif').on('click', function() {
                 let ket = $(this).data('ket');
                 $('#ket_modal').text('Anda yakin ingin ' + ket + ' data tag ini?');
             });
-            $('.btnHapus').on("click", function() {
+            $('.btnHapus').on('click', function() {
                 let ket = $(this).data('ket');
                 $('#ket_modal').text('Anda yakin ingin ' + ket + ' data tag ini?');
             });
-            $('.btnHapus1').on("click", function() {
+            $('.btnHapus1').on('click', function() {
                 let ket = $(this).data('ket');
                 $('#ket_modal').text('Anda yakin ingin ' + ket + ' data tag ini?');
             });
-            $('.btnNonaktif').on("click", function() {
+            $('.btnNonaktif').on('click', function() {
                 let ket = $(this).data('ket');
                 $('#ket_modal').text('Anda yakin ingin ' + ket + ' data tag ini?');
+            });
+            $('.btnEdit').on('click', function() {
+                let id = $(this).data('id');
+                let nama = $(this).data('namaold');
+                let ket = $(this).data('ketold');
+                $('.id_tag_new').val(id);
+                $('.nama_tag_new').val(nama);
+                $('.ket_tag_new').val(ket);
+                $('.nama-target').text(nama);
+            });
+            $('.btnEdit1').on('click', function() {
+                let id = $(this).data('id');
+                let nama = $(this).data('namaold');
+                let ket = $(this).data('ketold');
+                $('.id_tag_new').val(id);
+                $('.nama_tag_new').val(nama);
+                $('.ket_tag_new').val(ket);
+                $('.nama-target').text(nama);
             });
         });
     </script>

@@ -156,11 +156,17 @@
               </a>
             </div>
           <?php endforeach; ?>
+          <?php if(count($produkLain) != 0) { ?>
             <div class="col-md-12 text-center mb-5">
               <div id="loadMore" style="">
                 <button type="button" class="btn btn-secondary btn-md my-0 p">Lainnya</button>
               </div>
             </div>
+          <?php } else { ?>
+            <div class="col-md-12 text-center mb-5">
+            <h6 class="my-4 h6 text-warning">Belum ada produk dengan kategori yang sama!</h6>
+            </div>
+          <?php } ?>
         <!--Grid column
       </div>
       <!--Grid row-->

@@ -214,7 +214,7 @@ class Admin extends CI_Controller
     $this->form_validation->set_rules('nama_tag', 'Nama Tag', 'required|trim|min_length[3]|max_length[20]|alpha');
     $this->form_validation->set_rules('ket_tag', 'Keterangan Tag', 'required|trim|min_length[8]|max_length[50]');
     if ($this->form_validation->run() == false) {
-      $data['title'] = 'Tambah Tag Produk- Admin';
+      $data['title'] = 'Tambah Tag Produk - Admin';
       $data['tagAktif'] = $this->Admin_Model->getAllTag(1);
       $data['tagNonaktif'] = $this->Admin_Model->getAllTag(0);
       $this->load->view('admin/product/addTag', $data);
@@ -265,9 +265,9 @@ class Admin extends CI_Controller
   {
     if ($id != null) {
       if ($this->Admin_Model->deleteTag(decrypt_url($id))) {
-        $this->freeM->getSweetAlert('message', 'Horay!', 'Tag Produk berhasil hapus selamanya.', 'success');
+        $this->freeM->getSweetAlert('message', 'Horay!', 'Tag Produk berhasil dihapus selamanya.', 'success');
       } else {
-        $this->freeM->getSweetAlert('message', 'Upss!', 'Tag Produk gagal hapus selamanya..', 'error');
+        $this->freeM->getSweetAlert('message', 'Upss!', 'Tag Produk gagal dihapus selamanya.', 'error');
       }
       redirect('dashboard/admin/add_tag');
     } else {
@@ -331,13 +331,59 @@ class Admin extends CI_Controller
   {
     if ($id != null) {
       if ($this->Admin_Model->deleteCategory(decrypt_url($id))) {
-        $this->freeM->getSweetAlert('message', 'Horay!', 'Kategori Produk berhasil hapus selamanya.', 'success');
+        $this->freeM->getSweetAlert('message', 'Horay!', 'Kategori Produk berhasil dihapus selamanya.', 'success');
       } else {
-        $this->freeM->getSweetAlert('message', 'Upss!', 'Kategori Produk gagal hapus selamanya..', 'error');
+        $this->freeM->getSweetAlert('message', 'Upss!', 'Kategori Produk gagal dihapus selamanya.', 'error');
       }
       redirect('dashboard/admin/add_category');
     } else {
       redirect('dashboard/admin/add_category');
+    }
+  }
+
+  public function updateTag()
+  {
+    $this->form_validation->set_rules('nama_tag_new', 'Nama Tag', 'required|trim|min_length[3]|max_length[20]|alpha');
+    $this->form_validation->set_rules('ket_tag_new', 'Keterangan Tag', 'required|trim|min_length[8]|max_length[50]');
+    if ($this->form_validation->run() == false) {
+      $this->freeM->getSweetAlert('message', 'Upss!', 'Tag Produk gagal diupdate. Perbaiki data inputan!', 'error');
+      redirect('dashboard/admin/add_tag');
+    } else if ($this->form_validation->run() == true) {
+      $idTag =  $this->input->post('id_tag_new', true);
+      $data = [
+        'nama_tag' => ucwords($this->input->post('nama_tag_new', true)),
+        'ket_tag' =>  $this->input->post('ket_tag_new', true),
+      ];
+      if($this->Admin_Model->updateTagCat($idTag, 'tags', $data)){
+        $this->freeM->getSweetAlert('message', 'Horay!', 'Tag Produk berhasil diupdate.', 'success');
+        redirect('dashboard/admin/add_tag');
+      } else {
+        $this->freeM->getSweetAlert('message', 'Upss!', 'Tag Produk gagal diupdate. Query Error!', 'error');
+        redirect('dashboard/admin/add_tag');
+      }
+    }
+  }
+
+  public function updateCat()
+  {
+    $this->form_validation->set_rules('nama_cat_new', 'Nama Kategori', 'required|trim|min_length[3]|max_length[20]|alpha');
+    $this->form_validation->set_rules('ket_cat_new', 'Keterangan Kategori', 'required|trim|min_length[8]|max_length[50]');
+    if ($this->form_validation->run() == false) {
+      $this->freeM->getSweetAlert('message', 'Upss!', 'Kategori Produk gagal diupdate. Perbaiki data inputan!', 'error');
+      redirect('dashboard/admin/add_category');
+    } else if ($this->form_validation->run() == true) {
+      $idCat =  $this->input->post('id_cat_new', true);
+      $data = [
+        'nama_cat' => ucwords($this->input->post('nama_cat_new', true)),
+        'ket_cat' =>  $this->input->post('ket_cat_new', true),
+      ];
+      if($this->Admin_Model->updateTagCat($idCat, 'kategori', $data)){
+        $this->freeM->getSweetAlert('message', 'Horay!', 'Kategori Produk berhasil diupdate.', 'success');
+        redirect('dashboard/admin/add_category');
+      } else {
+        $this->freeM->getSweetAlert('message', 'Upss!', 'Kategori Produk gagal diupdate. Query Error!', 'error');
+        redirect('dashboard/admin/add_category');
+      }
     }
   }
 }

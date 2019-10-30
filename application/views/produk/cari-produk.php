@@ -52,8 +52,7 @@
       <?php if($totData == 0) { ?>
         <div class="alert alert-danger text-center" role="alert">
         Produk dengan kategori <strong><?= ucwords($this->uri->segment(4)) ?></strong>, 
-        <h3>Kosong!</h3>
-          <h6><a class="text-info" href="<?= base_url() ?>">Home</a></h6>
+          <h3>Kosong!</h3>
         </div>
       <?php } ?>
       <!--Section: Products v.3-->

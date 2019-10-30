@@ -26,9 +26,9 @@
   <!-- Links -->
 
       <div class="md-form my-0">
-        <input class="form-control" id="keyword" type="text" placeholder="Search" aria-label="Search">
+        <input class="form-control" id="keyword" type="text" autocomplete="off" placeholder="Nama Produk.." aria-label="Search">
       </div>
-      <button class="btn btn-outline-white btn-md my-0 ml-sm-2" id="btnCari" type="submit"><a id="gasCari" class="text-muted" href="" >Search</a></button>
+      <a id="gasCari" class="text-muted" href="" ><button class="btn btn-outline-white btn-md my-0 ml-sm-2" id="btnCari" type="submit">Cari</button></a>
 
 
 </div>

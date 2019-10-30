@@ -119,4 +119,11 @@ class Admin_Model extends CI_Model
         return $this->db->affected_rows();
     }
     // @end Category Produk
+
+    public function updateTagCat($id, $tabel, $data)
+    {
+        $whereID = ($tabel == 'tags')? 'id_tags' : 'id_cat';
+        $this->db->update($tabel, $data, [$whereID => $id]);
+        return $this->db->affected_rows();
+    }
 }

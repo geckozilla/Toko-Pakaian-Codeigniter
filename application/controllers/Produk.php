@@ -40,7 +40,7 @@ class Produk extends CI_Controller
             redirect('home');
         } else {
             if ($this->session->email) {
-                $data['title'] = 'HepiMart - Pembayaran';
+                $data['title'] = 'Millano - Pembayaran';
                 $this->load->view('produk/checkout-page', $data);
             } else {
                 $this->session->set_userdata('checkout_url', current_url());
@@ -55,7 +55,7 @@ class Produk extends CI_Controller
         $jenis = $this->uri->segment(3);
 		$data['tags'] = $this->Produk_Model->getAllTags();
 		$data['cat'] = $this->Produk_Model->getAllCat();
-        $data['title'] = 'HepiMart - Pencarian '.ucwords($nama);
+        $data['title'] = 'Millano - Pencarian '.ucwords($nama);
         $data['totData'] = $this->Produk_Model->hitungProdukKategori($jenis, $nama);
         //konfigurasi pagination
 		$config['base_url'] = base_url('produk/cari/'.$jenis.'/'.$nama); //site url
@@ -82,7 +82,7 @@ class Produk extends CI_Controller
         if($keyword == null){ redirect('home'); }
 		$data['tags'] = $this->Produk_Model->getAllTags();
 		$data['cat'] = $this->Produk_Model->getAllCat();
-        $data['title'] = 'HepiMart - Pencarian '. str_replace('%20',' ',ucwords($keyword));
+        $data['title'] = 'Millano - Pencarian '. str_replace('%20',' ',ucwords($keyword));
         $data['totData'] = $this->Produk_Model->hitungProdukKeyword($keyword);
                 //konfigurasi pagination
 		$config['base_url'] = base_url('produk/cari_produk/'.$keyword); //site url

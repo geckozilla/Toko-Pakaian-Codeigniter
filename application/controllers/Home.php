@@ -15,7 +15,7 @@ class Home extends CI_Controller
 	{
 		$data['tags'] = $this->Produk_Model->getAllTags();
 		$data['cat'] = $this->Produk_Model->getAllCat();
-		$data['title'] = 'HepiMart - Home';
+		$data['title'] = 'Millano - Home';
 		$data['tesUser'] = $this->session->email;
 		//konfigurasi pagination
 		$config['base_url'] = base_url('home/index'); //site url
